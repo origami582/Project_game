@@ -13,9 +13,14 @@ GREEN = (0,255,0)
 Blue = (0,0,255)
 
 ### กำหนดหน้าจอ
-SCREEN_W = 600
-SCREEN_H = 300 
+SCREEN_W = 1280
+SCREEN_H = 700
 screen = pygame.display.set_mode((SCREEN_W,SCREEN_H))
+
+### img back
+imgfirst = pygame.image.load("img/back.png")
+imgfirst = pygame.transform.scale(imgfirst,(SCREEN_W,SCREEN_H))
+
 
 ### แสดงหน้าจอ
 screen.fill(WHITE) ###เปลี่ยนสีพื้นหลังตามตัวแปล RGB ข้างบน
@@ -24,5 +29,6 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+    screen.blit(imgfirst,(0,0))
     pygame.display.update() ### อัพเดตสีพื้นหลัง
 pygame.quit() ### ออกเกม
