@@ -17,6 +17,7 @@ SCREEN_W = 1280
 SCREEN_H = 700
 screen = pygame.display.set_mode((SCREEN_W,SCREEN_H))
 
+### imgggggggggggggggggggggggg #################################################
 ### img back
 imgfirst = pygame.image.load("img/back.png")
 imgfirst = pygame.transform.scale(imgfirst,(SCREEN_W,SCREEN_H))
@@ -38,6 +39,7 @@ save = pygame.image.load("img/save.png")
 save_rect = save.get_rect()
 save_rect.centerx = SCREEN_W // 2
 save_rect.top = new_rect.bottom + 10
+#######################################################################
 
 ### แสดงหน้าจอ
 screen.fill(WHITE) ###เปลี่ยนสีพื้นหลังตามตัวแปล RGB ข้างบน
