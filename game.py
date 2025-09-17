@@ -17,7 +17,7 @@ SCREEN_W = 1280
 SCREEN_H = 700
 screen = pygame.display.set_mode((SCREEN_W,SCREEN_H))
 
-### imgggggggggggggggggggggggg #################################################
+### imgggggggggggggggggggggggg ###
 ### img back
 imgfirst = pygame.image.load("img/back.png")
 imgfirst = pygame.transform.scale(imgfirst,(SCREEN_W,SCREEN_H))
@@ -39,18 +39,39 @@ save = pygame.image.load("img/save.png")
 save_rect = save.get_rect()
 save_rect.centerx = SCREEN_W // 2
 save_rect.top = new_rect.bottom + 10
-#######################################################################
+### ห้องนอน ###
+bedroom = pygame.image.load("img/bedroom.png")
+bedroom_rect = save.get_rect()
+################################################
 
 ### แสดงหน้าจอ
+state = "menu"
 screen.fill(WHITE) ###เปลี่ยนสีพื้นหลังตามตัวแปล RGB ข้างบน
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    screen.blit(imgfirst,(0,0))
-    screen.blit(continewbottom, continewbottom_rect)
-    screen.blit(new,new_rect)
-    screen.blit(save,save_rect)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x = event.pos[0]
+            mouse_y = event.pos[1]
+            ### กดปุ่มเปลี่ยนหน้า ###
+            if state == "menu":
+                if continewbottom_rect.collidepoint(mouse_x, mouse_y):
+                    state = "continue"
+                elif new_rect.collidepoint(mouse_x, mouse_y):
+                    state = "newgame"
+                elif save_rect.collidepoint(mouse_x, mouse_y):
+                    state = "save"
+        elif state == "continue":
+            screen.blit(bedroom,(0,0))
+            #######################
+    if state == "menu":
+        screen.blit(imgfirst, (0, 0))
+        screen.blit(continewbottom, continewbottom_rect)
+        screen.blit(new, new_rect)
+        screen.blit(save, save_rect)
+    elif state == "continue":
+        screen.blit(bedroom, (0, 0))
     pygame.display.update() ### อัพเดตสีพื้นหลัง
 pygame.quit() ### ออกเกม
