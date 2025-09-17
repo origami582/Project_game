@@ -18,11 +18,11 @@ SCREEN_H = 300
 screen = pygame.display.set_mode((SCREEN_W,SCREEN_H))
 
 ### แสดงหน้าจอ
-screen.fill(WHITE)
+screen.fill(WHITE) ###เปลี่ยนสีพื้นหลังตามตัวแปล RGB ข้างบน
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    pygame.display.update()
+    pygame.display.update() ### อัพเดตสีพื้นหลัง
 pygame.quit() ### ออกเกม
